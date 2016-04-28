@@ -8,6 +8,7 @@ use Composer\Autoload\ClassLoader;
  */
 $loader = require __DIR__.'/../vendor/autoload.php';
 $loader->addPsr4("Greetings\\", __DIR__.'/../../Greetings', true);
+$loader->addPsr4("Customer\\", __DIR__.'/../../Customer', true);
 
 AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
 
