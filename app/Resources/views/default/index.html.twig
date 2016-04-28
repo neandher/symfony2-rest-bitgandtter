@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <ul id="servers"></ul>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function render() {
+                $("#servers").html("");
+                $.get("{{ path('instances') }}", function (response) {
+                    var instances = response["instances"];
+                    for (var index in instances) {
+                        if (instances.hasOwnProperty(index)) {
+                            var instance = instances[index];
+                            $.get("http://" + instance + "/app_dev.php/display", function (content) {
+                                $("#servers").append(content);
+                            });
+                        }
+                    }
+                });
+                setTimeout(function () {
+                    render();
+                }, 3600);
+            }
+
+            render();
+        });
+    </script>
+{% endblock %}
