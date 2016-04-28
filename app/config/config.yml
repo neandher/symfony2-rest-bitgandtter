@@ -99,3 +99,8 @@ fos_rest:
     format_listener:
         rules:
             - { path: ^/, priorities: [ json, xml ], fallback_format: json, prefer_extension: true }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\Customer
