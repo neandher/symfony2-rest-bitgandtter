@@ -112,3 +112,13 @@ fos_user:
     user_class: AppBundle\Entity\Customer
 
 nelmio_api_doc: ~
+
+fos_oauth_server:
+    db_driver: orm
+    client_class:        AppBundle\Entity\Client
+    access_token_class:  AppBundle\Entity\AccessToken
+    refresh_token_class: AppBundle\Entity\RefreshToken
+    auth_code_class:     AppBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_manager
+        storage: oauth.storage

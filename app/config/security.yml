@@ -20,12 +20,18 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
+        oauth_token:
+            pattern:      ^/oauth/v2/token
+            security:     false
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+        api_doc:
+            pattern:      ^/api/doc
+            security:     false
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+        api:
+            pattern:      ^/api
+            fos_oauth:    true
+            stateless:    true
+
+    access_control:
+        - { path: ^/api, roles: [ IS_AUTHENTICATED_FULLY ] }

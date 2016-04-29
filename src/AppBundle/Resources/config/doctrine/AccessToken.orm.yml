@@ -1,0 +1,20 @@
+AppBundle\Entity\AccessToken:
+    type: entity
+    table: access_token
+    id:
+        id:
+            id: true
+            type: integer
+            generator: { strategy: AUTO }
+    manyToOne:
+        user:
+            targetEntity: Customer
+            joinColumn:
+                name: costumer_id
+                referencedColumnName: id
+        client:
+            targetEntity: Client
+            joinColumn:
+                name: client_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

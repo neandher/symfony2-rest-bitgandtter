@@ -1,0 +1,20 @@
+AppBundle\Entity\AuthCode:
+    type: entity
+    table: auth_code
+    id:
+        id:
+            id: true
+            type: integer
+            generator: { strategy: AUTO }
+    manyToOne:
+        user:
+            targetEntity: Customer
+            joinColumn:
+                name: costumer_id
+                referencedColumnName: id
+        client:
+            targetEntity: Client
+            joinColumn:
+                name: client_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }
