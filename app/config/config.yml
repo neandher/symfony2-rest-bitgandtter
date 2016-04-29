@@ -96,9 +96,15 @@ fos_rest:
         formats:
             json: true
             xml: true
-    format_listener:
-        rules:
-            - { path: ^/, priorities: [ json, xml ], fallback_format: json, prefer_extension: true }
+    routing_loader:
+        default_format: json
+    #format_listener:
+    #    rules:
+    #        - { path: ^/, priorities: [ json, xml ], fallback_format: json, prefer_extension: true }
+
+sensio_framework_extra:
+    view:    { annotations: false }
+    router:  { annotations: true }
 
 fos_user:
     db_driver: orm
