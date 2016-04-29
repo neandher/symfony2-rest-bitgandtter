@@ -7,6 +7,7 @@ use AppBundle\Form\CustomerType;
 use FOS\RestBundle\Controller\Annotations as FOSRestBundleAnnotations;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Routing\ClassResourceInterface;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -24,11 +25,52 @@ class CustomersController extends FOSRestController implements ClassResourceInte
         return $customers;
     }
 
+    /**
+     * Response with the customer that has {customer} for id
+     *
+     * @ApiDoc(
+     *  section="Customer",
+     *  description="Get a customer",
+     *  requirements={
+     *      {
+     *          "name"="customer",
+     *          "dataType"="string",
+     *          "requirement"="*",
+     *          "description"="customer id"
+     *      }
+     *  },
+     *  statusCodes={
+     *         200="Returned when successful"
+     *  },
+     *  tags={
+     *   "stable" = "#4A7023",
+     *   "need validations" = "#ff0000"
+     *  }
+     * )
+     */
     public function getAction(Customer $customer)
     {
         return $customer;
     }
 
+    /**
+     * Create a new customer
+     *
+     * @ApiDoc(
+     *  section="Customer",
+     *  description="Create a new Customer",
+     *  input="AppBundle\Form\CustomerType",
+     *  output="AppBundle\Entity\Customer",
+     *  statusCodes={
+     *         200="Returned when successful"
+     *  },
+     *  tags={
+     *   "stable" = "#4A7023",
+     *   "need validations" = "#ff0000"
+     *  },
+     *  views = { "premium" }
+     * )
+     */
     public function postAction(Request $request)
     {
         $customer = new Customer();

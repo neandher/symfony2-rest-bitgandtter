@@ -110,3 +110,5 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: AppBundle\Entity\Customer
+
+nelmio_api_doc: ~
